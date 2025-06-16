@@ -1,0 +1,24 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: testdb
+      MYSQL_ROOT_PASSWORD: Mysql@123
+    ports:
+      - "3307:3306"
+    networks:
+      - backend-network
+
+  app:
+    build:
+      context: .
+    depends_on:
+      - db
+    restart: always   
+    ports:
+      - "8080:8080"
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
