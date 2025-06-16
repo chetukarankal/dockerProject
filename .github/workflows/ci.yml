@@ -27,7 +27,7 @@ jobs:
         run: docker build -t springboot-docker-project-app .
 
       - name: Upload jar artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-jar
           path: target/*.jar
