@@ -1,24 +1,24 @@
-name: Spring Boot CI
+name: Spring Boot CI  # pipline name
 
-on:
+on:    # when pipeline will start
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-jobs:
+jobs:  # work list
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # it will run ubuntu-latest os
 
     steps:
-      - name: Checkout code
+      - name: Checkout code    # repo clone
         uses: actions/checkout@v3
 
-      - name: Set up JDK 17
+      - name: Set up JDK 17    # java install
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'temurin'   # 
 
       - name: Build with Maven
         run: mvn clean package -DskipTests
@@ -30,4 +30,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-jar
-          path: target/*.jar
+          path: target/*.jar   #.jar file is uploaded to GitHub as an artifact
